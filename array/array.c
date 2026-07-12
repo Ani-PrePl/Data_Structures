@@ -11,7 +11,7 @@ int main(void)
     printf("Enter the size of the array: ");
     scanf("%d", &n);
 
-    int arr[n];
+    int arr[100];
     printf("Enter the elements of the array: ");
     for (int i = 0; i < n; i++)
     {
@@ -22,7 +22,7 @@ int main(void)
     int choice;
     scanf("%d", &choice);
 
-    switchCase(arr, n, choice);
+    n = switchCase(arr, n, choice);
 
     printf("Array after operation: ");
     for (int i = 0; i < n; i++)
@@ -56,7 +56,6 @@ int switchCase(int arr[], int n, int choice)
             n = deleteElement(arr, n, position);
             break;
         }
-
         case 3:
         {
             int element;
@@ -73,13 +72,13 @@ int switchCase(int arr[], int n, int choice)
             }
             break;
         }
-
         default:
         {
             printf("Invalid choice!\n");
             break;
         }
     }
+    return n;
 }
 
 int insertElement(int arr[], int n, int element, int position)
@@ -94,6 +93,7 @@ int insertElement(int arr[], int n, int element, int position)
     {
         arr[i] = arr[i - 1];
     }
+
     arr[position] = element;
     return n + 1;
 }
@@ -110,6 +110,7 @@ int deleteElement(int arr[], int n, int position)
     {
         arr[i] = arr[i + 1];
     }
+
     return n - 1;
 }
 
